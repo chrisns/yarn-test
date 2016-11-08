@@ -1,8 +1,6 @@
-sudo: required
-
-services:
-  - docker
-
-script:
-  - docker build -t foo .
-
+language: node_js
+node_js:
+  - "6"
+before_script:
+  - npm install -g yarn
+script: yarn install
