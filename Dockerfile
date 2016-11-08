@@ -1,6 +1,12 @@
-FROM node:6
+FROM quay.io/ukhomeofficedigital/nodejs-base:v4.4.2
 
-RUN npm install -g yarn
-COPY package.json .
-RUN yarn install
-RUN ls node_modules
+RUN yum clean all && \
+  yum update -y -q && \
+  yum install -y -q git && \
+  yum clean all && \
+  rpm --rebuilddb && \
+  npm --loglevel warn install -g npm@3
+
+COPY . /app
+RUN npm install
+CMD npm start
