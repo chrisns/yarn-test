@@ -5,7 +5,7 @@ RUN yum clean all && \
   yum install -y -q git && \
   yum clean all && \
   rpm --rebuilddb && \
-  npm install -g yarn@0.16.1
+  npm install -g yarn@*
 
 COPY . /app
 RUN yarn config set cache ~/.yarn-cache
