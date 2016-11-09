@@ -5,4 +5,4 @@ node_modules/
 .idea/
 
 # css
-public/css
+example.css
