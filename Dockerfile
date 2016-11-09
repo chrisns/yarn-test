@@ -5,8 +5,9 @@ RUN yum clean all && \
   yum install -y -q git && \
   yum clean all && \
   rpm --rebuilddb && \
-  npm --loglevel warn install -g npm@3
+  npm install -g yarn@0.16.1
 
 COPY . /app
-RUN npm install
+RUN yarn config set cache ~/.yarn-cache
+RUN yarn install
 CMD npm start
