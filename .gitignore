@@ -1,1 +1,8 @@
-node_modules
+# JavaScript
+node_modules/
+
+# IDE
+.idea/
+
+# css
+example.css

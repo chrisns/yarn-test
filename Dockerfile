@@ -1,6 +1,13 @@
-FROM node:6
+FROM quay.io/ukhomeofficedigital/nodejs-base:v4.4.2
 
-RUN npm install -g yarn
-COPY package.json .
+RUN yum clean all && \
+  yum update -y -q && \
+  yum install -y -q git && \
+  yum clean all && \
+  rpm --rebuilddb && \
+  npm install -g yarn@*
+
+COPY . /app
+RUN yarn config set cache ~/.yarn-cache
 RUN yarn install
-RUN ls node_modules
+CMD npm start
